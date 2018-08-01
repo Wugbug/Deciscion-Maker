@@ -26,8 +26,8 @@ class UserInterface extends Component {
                <hr />
             <div className="CriteriaOne"> <label for="CritOne"> Criteria One: </label>  <input type="text" id="CritOne" placeholder="Criteria One" /></div>
             <div id="Criteria OneImportance">
-               <label for="Importance"> Importance: </label> 
-             <select required id="Importance">
+               <label for="Crit1Importance"> Importance: </label> 
+             <select required id="Crit1Importance">
                  
                  <option value="One">1</option>
                  <option value="Two">2</option>
@@ -42,7 +42,7 @@ class UserInterface extends Component {
              </select>
              </div>
              <hr />
-            <div className="CriteriaTwo"> <label for="CriteriaTwo"> Criteria Two: </label>  <input type="text" id="NameTwo" placeholder="Criteria Two" /></div>
+            <div className="CriteriaTwo"> <label for="CritTwo"> Criteria Two: </label>  <input type="text" id="CritTwo" placeholder="Criteria Two" /></div>
             
              <div className="CriteriaOne"> </div>
              <div className="CriteriaTwo"> </div>
@@ -50,8 +50,8 @@ class UserInterface extends Component {
              
              
              <div id="Criteria TwoImportance"> 
-                 <label for="CriteriaOne"> Importance: </label> 
-                 <select required>
+                 <label for="Crit2Importance"> Importance: </label> 
+                 <select required id="Crit2Importance">
                      <option value="One">1</option>
                      <option value="Two">2</option>
                      <option value="Three">3</option>
