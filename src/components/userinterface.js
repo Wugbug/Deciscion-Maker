@@ -5,22 +5,15 @@ var input1 = "Default"
 
 class UserInterface extends Component {
 
-
-
-
-
-
-
     getInput(data) {
         input1 = document.getElementById(data).value;
         return input1;
     }
 
-
-
     render() {
         return (
         <div>
+            {/* "Crit" short for Criteria */}
             <div className="OptionOneName"> <label for="NameOne"> Job one: </label> <input type="text" id="NameOne" placeholder="Option One" /></div>
             <div className="OptionTwoName"> <label for="NameTwo"> Job two: </label>  <input type="text" id="NameTwo" placeholder="Option Two" /></div>
                <hr />
@@ -46,8 +39,6 @@ class UserInterface extends Component {
             
              <div className="CriteriaOne"> </div>
              <div className="CriteriaTwo"> </div>
-
-             
              
              <div id="Criteria TwoImportance"> 
                  <label for="Crit2Importance"> Importance: </label> 
@@ -100,6 +91,7 @@ class UserInterface extends Component {
                   <hr />
              <h1> "Job Two" </h1> <br /> 
              
+             {/* "Crit" short for Criteria */}
              <div >
                 <label for="Job2Crit1"> "Criteria One": &nbsp;   </label> 
                     <select required id="Job2Crit1">
@@ -133,19 +125,25 @@ class UserInterface extends Component {
                   
                     <hr/>
                 <h4> Your best choice would be " Name of option with Highest value" </h4>
-                  
-             
-            
+
            </div>
         )
     }
 }
             
-            // var NameUno = document.getElementById("NameOne")
-            // var NameDos = document.getElementById("NameTwo")
+            var OptionOne = document.getElementById("NameOne").value;
+            var OptionTwo = document.getElementById("NameTwo").value;
 
-            // var CritOneImportance = document.getElementById("Criteria OneImportance")
-            // var CritTwoImportance = document.getElementById("Criteria TwoImportance")
+            var Crit1 = document.getElementById("CritOne").value;
+            var Crit2 = document.getElementById("CritTwo").value;
+              
+            var Crit1Importance = document.getElementById("Crit1Importance").value;
+            var Crit2Importance = document.getElementById("Crit2Importance").value;
 
+            var Job1Crit1 = document.getElementById("Job1Crit1").value;
+            var Job1Crit2 = document.getElementById("Job1Crit2").value;
+
+            var Job2Crit1 = document.getElementById("Job1Crit1").value;
+            var Job2Crit2 = document.getElementById("Job1Crit2").value;
 
 export default UserInterface;
