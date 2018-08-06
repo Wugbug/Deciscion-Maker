@@ -1,21 +1,69 @@
 import React, { Component } from 'react';
 
 
-var input1 = "Default"
+var input1 = "Default";
+
+
+
 
 class UserInterface extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            highestOptionValue: 0
+        }
+        this.dynamicSet = this.dynamicSet.bind(this);
+    }
 
     getInput(data) {
         input1 = document.getElementById(data).value;
         return input1;
     }
 
+     PairOptions() {
+      if (OptionOneValue > OptionTwoValue) {
+            document.getElementById("WinningOption").innerHTML= OptionOne;
+        }
+
+        else {
+            document.getElementById("WinningOption").innerHTML= OptionTwo;
+        }
+    };
+
+    dynamicSet() {
+        var OptionOne = document.getElementById("NameOne").value;
+        var OptionTwo = document.getElementById("NameTwo").value;
+    
+        var Crit1 = document.getElementById("CritOne").value;
+        var Crit2 = document.getElementById("CritTwo").value;
+       
+        var Crit1Importance = parseInt(document.getElementById("Crit1Importance").value);
+        var Crit2Importance = parseInt(document.getElementById("Crit2Importance").value);
+    
+        var Job1Crit1 = parseInt(document.getElementById("Job1Crit1").value);
+        var Job1Crit2 = parseInt(document.getElementById("Job1Crit2").value);
+    
+        var Job2Crit1 = parseInt(document.getElementById("Job1Crit1").value);
+        var Job2Crit2 = parseInt(document.getElementById("Job1Crit2").value);
+    
+        var OptionOneValue = parseInt((Job1Crit1 + Job1Crit2) * Crit1Importance);
+        var OptionTwoValue = parseInt((Job2Crit1 + Job2Crit2) * Crit2Importance);
+    
+        var HighestOptionValue = Math.max(OptionOneValue, OptionTwoValue)
+        console.log(HighestOptionValue);
+
+
+        document.getElementById("HighestOptionValue").innerHTML = HighestOptionValue;
+ 
+    }
+
     render() {
         return (
         <div>
             {/* "Crit" short for Criteria */}
-            <div className="OptionOneName"> <label for="NameOne"> Job one: </label> <input type="text" id="NameOne" placeholder="Option One" /></div>
-            <div className="OptionTwoName"> <label for="NameTwo"> Job two: </label>  <input type="text" id="NameTwo" placeholder="Option Two" /></div>
+            <div className="OptionOneName"> <label for="NameOne"> Option one: </label> <input type="text" id="NameOne" placeholder="Option One" /></div>
+            <div className="OptionTwoName"> <label for="NameTwo"> Option two: </label>  <input type="text" id="NameTwo" placeholder="Option Two" /></div>
                <hr />
             <div className="CriteriaOne"> <label for="CritOne"> Criteria One: </label>  <input type="text" id="CritOne" placeholder="Criteria One" /></div>
             <div id="Criteria OneImportance">
@@ -56,7 +104,7 @@ class UserInterface extends Component {
                   </select> 
              </div>
              <hr />
-             <h1> "Job One" </h1> <br /> 
+             <h1> "Option One" </h1> <br /> 
              
              <div >
                 <label for="Job1Crit1"> "Criteria One": &nbsp;   </label> 
@@ -89,7 +137,7 @@ class UserInterface extends Component {
                   </select> 
 
                   <hr />
-             <h1> "Job Two" </h1> <br /> 
+             <h1> "Option Two" </h1> <br /> 
              
              {/* "Crit" short for Criteria */}
              <div >
@@ -121,29 +169,26 @@ class UserInterface extends Component {
                      <option value="Nine">9</option>
                      <option value="Ten">10</option>
                   </select> 
-                  
+
                   
                     <hr/>
-                <h4> Your best choice would be " Name of option with Highest value" </h4>
+                    <button class="buttonclass" onClick={ this.dynamicSet} >Update</button>
+                    
+                    <br />
+                    <br />
+                 <h4> Your best choice would be <span id="WinningOption"> </span> with a score of <span id="HighestOptionValue"></span> </h4> 
 
            </div>
         )
     }
+
+
+
 }
             
-            var OptionOne = document.getElementById("NameOne").value;
-            var OptionTwo = document.getElementById("NameTwo").value;
 
-            var Crit1 = document.getElementById("CritOne").value;
-            var Crit2 = document.getElementById("CritTwo").value;
-              
-            var Crit1Importance = document.getElementById("Crit1Importance").value;
-            var Crit2Importance = document.getElementById("Crit2Importance").value;
 
-            var Job1Crit1 = document.getElementById("Job1Crit1").value;
-            var Job1Crit2 = document.getElementById("Job1Crit2").value;
 
-            var Job2Crit1 = document.getElementById("Job1Crit1").value;
-            var Job2Crit2 = document.getElementById("Job1Crit2").value;
+
 
 export default UserInterface;
