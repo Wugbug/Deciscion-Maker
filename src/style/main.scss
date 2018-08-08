@@ -1,13 +1,28 @@
 .buttonclass {
     height: 50px;
     width: 100px;
-};
+}
 
 #firstHalf {
     display: block;
-};
+}
 
-// #secondHalf {
-//      display: none;
-//     background-color:  cornflowerblue;
-// };
+#secondHalf {
+     display: none;
+}
+
+#results {
+    display: none;
+}
+
+#toggleButton1 {
+    display: block;
+}
+
+#resultsReturnBttn {
+    display: none;
+}
+
+.showResults {
+    display: inline;
+}
