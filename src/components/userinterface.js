@@ -135,14 +135,20 @@ class UserInterface extends Component {
     }
 
     Continue() {
+        var OptionOne = document.getElementById("NameOne").value;
+        var OptionTwo = document.getElementById("NameTwo").value;
+    
+        var Crit1 = document.getElementById("CritOne").value;
+        var Crit2 = document.getElementById("CritTwo").value;
+
         if (OptionOne=="") {
-            alert("Please fill in all Information")
+            alert("Please fill in option one")
         } else if (OptionTwo=="") {
-            alert("Please fill in all Information")
-        } else if (Crit1="") {
-            alert("Please fill in all Information")
-        } else if (Crit2="") {
-            alert("Please fill in all Information")
+            alert("Please fill in option two")
+        } else if (Crit1=="") {
+            alert("Please fill in criteria one")
+        } else if (Crit2=="") {
+            alert("Please fill in criteria two")
         } else {
             OptionOne = document.getElementById("NameOne").value;
         OptionTwo = document.getElementById("NameTwo").value;
@@ -184,7 +190,21 @@ class UserInterface extends Component {
             document.getElementById("losingOption").innerHTML = OptionOne;
             document.getElementById("losingScore").innerHTML = OptionOneValue;
         } 
+        var x = document.getElementById("secondHalf");
+        var y = document.getElementById("firstHalf");
+        var z = document.getElementsByClassName("showResults");
+        if (x.style.display=="none") {
+            x.style.display="block";
+            y.style.display="none";
+            document.getElementById("toggleButton1").innerHTML =  "Go Back";
+            z.style.display="block"
+        } else {
+            x.style.display = "none";
+            y.style.display="block";
+            document.getElementById("toggleButton1").innerHTML =  "Continue";
         }
+        }
+        
     }
 
     render() {
@@ -192,10 +212,10 @@ class UserInterface extends Component {
         <div id="wrapper">
             <div id="firstHalf">
             {/* "Crit" short for Criteria */}
-            <div className="OptionOneName"> <label for="NameOne"> Option one: </label> <input type="text" id="NameOne" placeholder="Option One" onChange={this.dynamicSet} /></div>
-            <div className="OptionTwoName"> <label for="NameTwo"> Option two: </label>  <input type="text" id="NameTwo" placeholder="Option Two" onChange={this.dynamicSet} /></div>
+            <div className="OptionOneName"> <label for="NameOne"> Option one: </label> <input type="text" id="NameOne" placeholder="Option One"  /></div>
+            <div className="OptionTwoName"> <label for="NameTwo"> Option two: </label>  <input type="text" id="NameTwo" placeholder="Option Two"  /></div>
                <hr />
-            <div className="CriteriaOne"> <label for="CritOne"> Criteria One: </label>  <input type="text" id="CritOne" placeholder="Criteria One" onChange={this.dynamicSet} /></div>
+            <div className="CriteriaOne"> <label for="CritOne"> Criteria One: </label>  <input type="text" id="CritOne" placeholder="Criteria One"  /></div>
             <div id="Criteria OneImportance">
                <label for="Crit1Importance"> Importance: &nbsp; </label> 
              <select required id="Crit1Importance">
@@ -215,14 +235,14 @@ class UserInterface extends Component {
              </select>
              </div>
              <hr />
-            <div className="CriteriaTwo"> <label for="CritTwo"> Criteria Two: </label>  <input type="text" id="CritTwo" placeholder="Criteria Two" onChange={this.dynamicSet} /></div>
+            <div className="CriteriaTwo"> <label for="CritTwo"> Criteria Two: </label>  <input type="text" id="CritTwo" placeholder="Criteria Two"  /></div>
             
              <div className="CriteriaOne"> </div>
              <div className="CriteriaTwo"> </div>
              
              <div id="Criteria TwoImportance"> 
                  <label for="Crit2Importance"> Importance:&nbsp; </label> 
-                 <select required id="Crit2Importance" onChange={this.dynamicSet}>
+                 <select required id="Crit2Importance" >
                  <option value="1">1</option>
                  <option value="2">2</option>
                  <option value="3">3</option>
@@ -240,7 +260,7 @@ class UserInterface extends Component {
              
              {/* <button onClick="continueButton()" id="continueButt">Continue</button> */}
              <hr />
-             <button id="toggleButton1" onClick={this.showHide}> Continue </button>
+             <button id="toggleButton1" onClick={this.Continue}> Continue </button>
              <div id="secondHalf">
              <h1> <span id="OptionOneHeading"> Option one </span> </h1> <br /> 
              
