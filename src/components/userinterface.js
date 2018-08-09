@@ -57,6 +57,7 @@ class UserInterface extends Component {
     // }
 
     dynamicSet() {
+
         OptionOne = document.getElementById("NameOne").value;
         OptionTwo = document.getElementById("NameTwo").value;
     
@@ -83,6 +84,8 @@ class UserInterface extends Component {
         document.getElementById("losingScore").innerHTML = OptionTwo;
         document.getElementById("CriteriaOneLabel").innerHTML = Crit1;
         document.getElementById("CriteriaTwoLabel").innerHTML = Crit2;
+        document.getElementById("CriteriaOneLabel1").innerHTML = Crit1;
+        document.getElementById("CriteriaTwoLabel2").innerHTML = Crit2;
  
         if (OptionOneValue > OptionTwoValue) {
             document.getElementById("WinningOption").innerHTML = OptionOne;
@@ -131,9 +134,62 @@ class UserInterface extends Component {
         }
     }
 
+    Continue() {
+        if (OptionOne=="") {
+            alert("Please fill in all Information")
+        } else if (OptionTwo=="") {
+            alert("Please fill in all Information")
+        } else if (Crit1="") {
+            alert("Please fill in all Information")
+        } else if (Crit2="") {
+            alert("Please fill in all Information")
+        } else {
+            OptionOne = document.getElementById("NameOne").value;
+        OptionTwo = document.getElementById("NameTwo").value;
+    
+        var Crit1 = document.getElementById("CritOne").value;
+        var Crit2 = document.getElementById("CritTwo").value;
+       
+        var Crit1Importance = document.getElementById("Crit1Importance").value; console.log (Crit1Importance);
+        var Crit2Importance = document.getElementById("Crit2Importance").value; console.log (Crit2Importance);
+    
+        var Job1Crit1 = document.getElementById("Job1Crit1").value; console.log (Job1Crit1);
+        var Job1Crit2 = document.getElementById("Job1Crit2").value;  console.log (Job1Crit2);
+    
+        var Job2Crit1 = document.getElementById("Job2Crit1").value; console.log (Job2Crit1);
+        var Job2Crit2 = document.getElementById("Job2Crit2").value; console.log (Job2Crit2);
+    
+        OptionOneValue = (Job1Crit1 * Crit1Importance) + (Job1Crit2 * Crit2Importance) ;  console.log (OptionOneValue);
+        OptionTwoValue = (Job2Crit1 * Crit1Importance) + (Job2Crit2 * Crit2Importance);  console.log (OptionTwoValue);
+    
+        var HighestOptionValue = Math.max(OptionOneValue, OptionTwoValue); 
+
+        document.getElementById("HighestOptionValue").innerHTML = HighestOptionValue;
+        document.getElementById("OptionOneHeading").innerHTML = OptionOne;
+        document.getElementById("OptionTwoHeading").innerHTML = OptionTwo;
+        document.getElementById("losingScore").innerHTML = OptionTwo;
+        document.getElementById("CriteriaOneLabel").innerHTML = Crit1;
+        document.getElementById("CriteriaTwoLabel").innerHTML = Crit2;
+        document.getElementById("CriteriaOneLabel1").innerHTML = Crit1;
+        document.getElementById("CriteriaTwoLabel2").innerHTML = Crit2;
+ 
+        if (OptionOneValue > OptionTwoValue) {
+            document.getElementById("WinningOption").innerHTML = OptionOne;
+            document.getElementById("losingOption").innerHTML = OptionTwo;
+            document.getElementById("losingScore").innerHTML = OptionTwoValue;
+        }
+
+        else {
+            document.getElementById("WinningOption").innerHTML = OptionTwo;
+            document.getElementById("losingOption").innerHTML = OptionOne;
+            document.getElementById("losingScore").innerHTML = OptionOneValue;
+        } 
+        }
+    }
+
     render() {
         return (
-        <div>
+        <div id="wrapper">
             <div id="firstHalf">
             {/* "Crit" short for Criteria */}
             <div className="OptionOneName"> <label for="NameOne"> Option one: </label> <input type="text" id="NameOne" placeholder="Option One" onChange={this.dynamicSet} /></div>
@@ -223,7 +279,7 @@ class UserInterface extends Component {
              
              {/* "Crit" short for Criteria */}
              <div >
-                <label for="Job2Crit1"><span id="CriteriaOneLabel"> "Criteria One":   </span>&nbsp;    </label> 
+                <label for="Job2Crit1"><span id="CriteriaOneLabel1"> "Criteria One":   </span>&nbsp;    </label> 
                     <select required id="Job2Crit1" onChange={this.dynamicSet}>
                     <option value="1">1</option>
                  <option value="2">2</option>
@@ -238,7 +294,7 @@ class UserInterface extends Component {
                     </select> 
              </div>
                         
-                  <label for="Job2Crit2"><span id="CriteriaTwoLabel"> "Criteria Two":   </span>&nbsp;     </label> 
+                  <label for="Job2Crit2"><span id="CriteriaTwoLabel2"> "Criteria Two":   </span>&nbsp;     </label> 
              <select required id="Job2Crit2" onChange={this.dynamicSet}>
              <option value="1">1</option>
                  <option value="2">2</option>
@@ -262,7 +318,7 @@ class UserInterface extends Component {
                 <div id="results">
                  <h4> Your best choice would be "<span id="WinningOption"> </span>" with a score of "<span id="HighestOptionValue"> </span>" vs. "<span id="losingOption"> </span>" with a score of "<span id ="losingScore"> </span>". </h4> 
                 </div>
-                <div id="resultsReturnBttn"> <button onClick={this.showHideResults}> Return </button> </div>
+                <div id="resultsReturnBttn"> <button id="return" onClick={this.showHideResults}> Return </button> </div>
            </div>
 
         )
